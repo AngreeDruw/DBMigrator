@@ -1,4 +1,4 @@
-﻿using Application.DbContext;
+﻿using ApplicationLayer.DbContext;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +13,7 @@ namespace Infrastructure.EntityDbContext
 
         public EntityContext(DbContextOptions<EntityContext> options) : base(options) 
         {
-       
+            Database.EnsureCreated();
         }
 
     }
