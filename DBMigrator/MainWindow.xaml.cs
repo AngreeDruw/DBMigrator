@@ -1,5 +1,6 @@
 ﻿using ApplicationLayer.DbContext;
 using ApplicationLayer.UseCases.Solutions.Commands;
+using ApplicationLayer.UseCases.Solutions.Queries;
 using Domain.Entities;
 using Infrastructure.EntityDbContext;
 using MediatR;
@@ -25,12 +26,10 @@ namespace DBMigrator
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly EntityContext _context;
         private readonly IMediator _mediator;
 
-        public MainWindow(EntityContext context, IMediator mediator)
+        public MainWindow(IMediator mediator)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
             InitializeComponent();
@@ -43,9 +42,9 @@ namespace DBMigrator
             RefrechSolutionList();
         }
 
-        private void RefrechSolutionList()
+        private async void RefrechSolutionList()
         {
-            solutionList.ItemsSource = _context.Solutions.ToList();
+            solutionList.ItemsSource = await _mediator.Send(new GetSolutionListQuery());
         }
 
 
