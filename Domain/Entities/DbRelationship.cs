@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class DatabaseRelationship : EntityBase
+    public class DbRelationship : EntityBase
     {
         public Database Leading { get; set; }
         public Guid LeadingId { get; set; }

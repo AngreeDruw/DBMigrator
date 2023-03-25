@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Application.DbContext;
+using Infrastructure.EntityDbContext;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure
 {
@@ -12,7 +10,12 @@ namespace Infrastructure
     {
         public static void AddApplicationDI(this IServiceCollection services, IConfiguration configuration)
         {
-
+            #region EntityDbContext
+            string? connection = configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<IEntityDbContext, EntityContext>(options =>
+            options.UseSqlite(connection),
+                ServiceLifetime.Scoped);
+            #endregion
         }
     }
 }

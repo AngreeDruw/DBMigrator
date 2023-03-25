@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "DBMigrator\Presentation.csproj", "{88F03B78-B910-436F-9F74-0CCAD0DC9569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "DBMigrator\Presentation.csproj", "{88F03B78-B910-436F-9F74-0CCAD0DC9569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C5EFDE34-4A07-4005-9B2E-C391CDE79E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLayer", "Application\ApplicationLayer.csproj", "{C5EFDE34-4A07-4005-9B2E-C391CDE79E86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6DD61C8E-F0D0-4B61-A414-69E848683F6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6DD61C8E-F0D0-4B61-A414-69E848683F6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{31B87785-DB16-4794-BA68-0DCA89AA9882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{31B87785-DB16-4794-BA68-0DCA89AA9882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

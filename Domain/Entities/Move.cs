@@ -2,11 +2,11 @@
 
 namespace Domain.Entities
 {
-    public class Action : EntityBase
+    public class Move : EntityBase
     {
         public string Name { get; set; }
         public int SortNumber { get; set; } = 0;
-        public DatabaseRelationship Relationship { get; set; }
+        public DbRelationship Relationship { get; set; }
         public Guid RelationshipId { get; set; }
         public string ActionJSON { get; set; }
     }
