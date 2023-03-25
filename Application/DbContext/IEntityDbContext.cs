@@ -9,5 +9,9 @@ namespace ApplicationLayer.DbContext
         public DbSet<Database> Databases { get; set; }
         public DbSet<DbRelationship> Relationships { get; set; }
         public DbSet<Move> Moves { get; set; }
+
+        public int SaveChanges();
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
     }
 }

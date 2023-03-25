@@ -1,7 +1,6 @@
 ﻿using ApplicationLayer.DbContext;
 using Infrastructure.EntityDbContext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 

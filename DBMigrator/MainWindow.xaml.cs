@@ -1,4 +1,9 @@
-﻿using System;
+﻿using ApplicationLayer.DbContext;
+using ApplicationLayer.UseCases.Solutions.Commands;
+using Domain.Entities;
+using Infrastructure.EntityDbContext;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +25,29 @@ namespace DBMigrator
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        readonly EntityContext _context;
+        private readonly IMediator _mediator;
+
+        public MainWindow(EntityContext context, IMediator mediator)
         {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+
             InitializeComponent();
+            RefrechSolutionList();
         }
+
+        private async void btnAddSolution_Click(object sender, RoutedEventArgs e)
+        {
+            await _mediator.Send(new AddSolutionCommand { Name = "SSS", Description = "DDDD" });
+            RefrechSolutionList();
+        }
+
+        private void RefrechSolutionList()
+        {
+            solutionList.ItemsSource = _context.Solutions.ToList();
+        }
+
+
     }
 }

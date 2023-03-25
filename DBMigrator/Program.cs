@@ -1,10 +1,14 @@
 ﻿using ApplicationLayer;
+using ApplicationLayer.DbContext;
 using DBMigrator;
 using Infrastructure;
+using Infrastructure.EntityDbContext;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Configuration;
+using System.Reflection;
 
 namespace Presentation
 {
@@ -13,6 +17,7 @@ namespace Presentation
         [STAThread]
         public static void Main()
         {
+            
             var builder = Host.CreateDefaultBuilder();
 
             builder.ConfigureServices(services =>
@@ -20,14 +25,15 @@ namespace Presentation
                     services.AddSingleton<App>();
                     services.AddSingleton<MainWindow>();
                     services.AddInfrastructureDI(ConfigurationManager.ConnectionStrings);
+                    services.AddApplicationDI();
+                    
                 });
-           
-           
 
             var host = builder.Build();
-           
 
-        var app = host.Services.GetService<App>();
+            host.Services.GetService<EntityContext>();
+
+            var app = host.Services.GetService<App>();
             app?.Run();
 
         }
