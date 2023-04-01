@@ -9,11 +9,11 @@ namespace ApplicationLayer.UseCases.Solutions.Commands
         public string Name { get; set; } = "NoName";
         public string Description { get; set; } = string.Empty;
 
-        public class AddSolutionCommandHandler : IRequestHandler<AddSolutionCommand, Solution>
+        private class Handler : IRequestHandler<AddSolutionCommand, Solution>
         {
             readonly IEntityDbContext _context;
 
-            public AddSolutionCommandHandler(IEntityDbContext context)
+            public Handler(IEntityDbContext context)
             {
                 _context = context;
             }

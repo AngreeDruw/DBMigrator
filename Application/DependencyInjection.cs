@@ -15,6 +15,7 @@ namespace ApplicationLayer
         public static void AddApplicationDI(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         }
     }

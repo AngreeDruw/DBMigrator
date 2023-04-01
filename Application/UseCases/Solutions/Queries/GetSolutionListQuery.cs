@@ -1,4 +1,6 @@
 ﻿using ApplicationLayer.DbContext;
+using ApplicationLayer.UseCases.Solutions.ViewModels;
+using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -10,20 +12,25 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.UseCases.Solutions.Queries
 {
-    public class GetSolutionListQuery : IRequest<List<Solution>>
+    public class GetSolutionListQuery : IRequest<List<SolutionsViewModel>>
     {
-        public class GetSolutionListQueryHandler : IRequestHandler<GetSolutionListQuery, List<Solution>>
+        private class Handler : IRequestHandler<GetSolutionListQuery, List<SolutionsViewModel>>
         {
             readonly IEntityDbContext _context;
+            readonly IMapper _mapper;
 
-            public GetSolutionListQueryHandler(IEntityDbContext context)
+            public Handler(
+                IEntityDbContext context,
+                IMapper mapper)
             {
                 _context = context;
+                _mapper = mapper;
             }
 
-            public async Task<List<Solution>> Handle(GetSolutionListQuery request, CancellationToken cancellationToken)
+            public async Task<List<SolutionsViewModel>> Handle(GetSolutionListQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Solutions.ToListAsync(cancellationToken);
+                var solution = await _context.Solutions.ToListAsync(cancellationToken);
+                return _mapper.Map<List<SolutionsViewModel>>(solution);
             }
         }
     }
